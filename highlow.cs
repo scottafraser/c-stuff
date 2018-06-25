@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-
 class Game
 {
    private int _min = 1;
    private int _max = 100;
 
-
-
 public void SetMin(int newMin)
 {
   _min = newMin;
 }
+
 public int GetMin()
 {
   return _min;
@@ -32,17 +30,14 @@ public int GetMax()
 
 public void buildRange()
 {
-  int[] numbers = Enumerable.Range(this.SetMin, this.SetMax).ToArray();
+  int[] numbers = Enumerable.Range(this.GetMin(), this.GetMax()).ToArray();
   string joinNumbers = (string.Join(",", numbers));
-  return joinNumbers;
+    Console.WriteLine(joinNumbers);
 }
 
-}
+public static void Main(){
+Game gamer = new Game();
 
-class Program
-{
-  static void Main()
-  {
   Console.WriteLine("Would you like to play? (Yes/No) ");
   string beginAnswer = Console.ReadLine();
   if (beginAnswer == "Yes" || beginAnswer == "yes")
@@ -51,7 +46,7 @@ class Program
     string guessAnswer = Console.ReadLine();
     if (guessAnswer == "higher")
     {
-      Console.WriteLine(buildRange());
+      gamer.buildRange();
     }
 
     else if(guessAnswer == "correct")
@@ -66,5 +61,7 @@ class Program
   }
   if (beginAnswer == "No" || beginAnswer == "no")
   Console.WriteLine("well fine then...");
+
   }
+
 }
